@@ -6,14 +6,19 @@ function App({ name }) {
   const [status, setStatus] = useState(null);
   const [data, setData] = useState(null);
 
-  const apiHost = 'http://localhost:8080'; 
+  const apiHost = 'https://oidc-gateway.dev.zo.zillow.net'; 
   const apiUrl = apiHost + '/httpbin/get';
+  // const apiHost = 'http://localhost:8080'; 
+  // const apiUrl = apiHost + '/httpbin/get';
+  // const apiHost = 'https://amer-demo46-test.apigee.net';
+  // const apiUrl = apiHost + '/oidc-1/httpbin/get';
 
   axios.interceptors.response.use(null, function (error) {
     if (error && error.response) {
       setStatus(error.response.status);
       if (error.response.status === 401) {
-        window.location.replace(apiHost + error.response.headers['oidc-api-gateway-login-path'] + '?from=' + encodeURI(window.location.href));
+        // the apikey is for the apigee solution
+        window.location.replace(apiHost + error.response.headers['oidc-api-gateway-login-path'] + '?apikey=ldQ1yBz9J8nmhg7zrqHYfJGujuvAhYhR&from=' + encodeURI(window.location.href));
       }  
     }
     return Promise.reject(error);
