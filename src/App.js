@@ -6,7 +6,7 @@ function App({ name }) {
   const [status, setStatus] = useState(null);
   const [data, setData] = useState(null);
 
-  const apiHost = 'https://oidc-gateway.dev.zo.zillow.net'; 
+  const apiHost = 'https://authenticated.dev.zo.zillow.net'; 
   const apiUrl = apiHost + '/httpbin/get';
   // const apiHost = 'http://localhost:8080'; 
   // const apiUrl = apiHost + '/httpbin/get';
