@@ -7,9 +7,8 @@ function App({ name }) {
   const [data, setData] = useState(null);
 
   const apiHost = 'https://authenticated.dev.zo.zillow.net'; 
-  const apiUrl = apiHost + '/httpbin/get';
-  // const apiHost = 'http://localhost:8080'; 
-  // const apiUrl = apiHost + '/httpbin/get';
+  // const apiHost = 'http://localhost:13490'; 
+  const apiUrl = apiHost + '/offer-underwriting/v3/offer-requests/X1-ORz3rok71a6iyi_bs7n6/offer-underwriting'
   // const apiHost = 'https://amer-demo46-test.apigee.net';
   // const apiUrl = apiHost + '/oidc-1/httpbin/get';
 
@@ -18,7 +17,7 @@ function App({ name }) {
       setStatus(error.response.status);
       if (error.response.status === 401) {
         // the apikey is for the apigee solution
-        window.location.replace(apiHost + error.response.headers['oidc-api-gateway-login-path'] + '?apikey=ldQ1yBz9J8nmhg7zrqHYfJGujuvAhYhR&from=' + encodeURI(window.location.href));
+        window.location.replace(apiHost + '/log-in?from=' + encodeURI(window.location.href));
       }  
     }
     return Promise.reject(error);
